@@ -4,7 +4,7 @@ verify_ssl = true
 
 [packages]
 django = "*"
-gunicorn = "*"
+daphne = "*"
 django-heroku = "*"
 channels = "*"
 channels-redis = "*"
