@@ -9,11 +9,11 @@ class Consumer(AsyncWebsocketConsumer):
     async def disconnect(self, close_code):
         await self.channel_layer.group_discard(self.group_name, self.channel_name)
 
-    async def receive(self, text_data):
+    async def receive(self, **kwargs):
         await self.channel_layer.group_send(self.group_name, {
             'type': 'message',
-            'message': text_data,
+            'kwargs': kwargs,
         })
 
     async def message(self, event):
-        await self.send(text_data=event['message'])
+        await self.send(**event['kwargs'])
