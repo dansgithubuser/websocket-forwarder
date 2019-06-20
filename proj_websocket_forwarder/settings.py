@@ -33,6 +33,7 @@ ALLOWED_HOSTS = [
 # Application definition
 
 INSTALLED_APPS = [
+    'channels',
     'websocket_forwarder.apps.WebsocketForwarderConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -140,6 +141,8 @@ CSRF_COOKIE_SECURE = True
 X_FRAME_OPTIONS = 'DENY'
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 SECURE_HSTS_PRELOAD = True
+
+ASGI_APPLICATION = 'proj_websocket_forwarder.routing.application'
 
 if os.environ.get('DJANGOGO_ENV') != 'local':
     import django_heroku
